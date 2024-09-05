@@ -1,0 +1,19 @@
+name: "Get error from list of failures"
+description: "desc"
+inputs:
+  string:
+    description: "The input string"
+    required: true
+  start:
+    description: "The starting substring to search for"
+    required: true
+  end:
+    description: "The ending substring to search for"
+    required: true
+
+runs:
+  using: node16
+  main: index.js
+branding:
+  icon: "search"
+  color: gray-dark

@@ -25,20 +25,24 @@ try {
 }
 
 function getErrorWithMinChars(arr) {
-    if (arr.length === 0) {
+	var filtered = arr.filter(function(el) {
+		return (el != null && el != "" && el != undefined);
+	});
+
+    if (filtered.length === 0) {
         return "";
     }
 
-    var max = arr[0];
+    var max = filtered[0];
     var maxIndex = 0;
 
-    for (var i = 1; i < arr.length; i++) {
-        if (arr[i] < max) {
+    for (var i = 1; i < filtered.length; i++) {
+        if (filtered[i] < max) {
             maxIndex = i;
-            max = arr[i];
+            max = filtered[i];
         }
     }
 
-    return arr[maxIndex];
+    return filtered[maxIndex];
 }
 

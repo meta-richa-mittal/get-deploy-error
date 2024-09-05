@@ -11,6 +11,7 @@ try {
   if (string) {
     const pos = string.indexOf(start) + start.length;
     result = string.substring(pos, string.indexOf(end, pos));
+	console.log("****1" + result.split('All Component Failures:\n'));
 	var errorListStr = result.split('All Component Failures:\n')[1];
 	smallest_error = getErrorWithMinChars(errorListStr.split('\n'));
 	console.log("****" + smallest_error);
@@ -39,3 +40,4 @@ function getErrorWithMinChars(arr) {
 
     return arr[maxIndex];
 }
+

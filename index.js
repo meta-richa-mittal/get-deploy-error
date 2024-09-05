@@ -13,6 +13,7 @@ try {
     result = string.substring(pos, string.indexOf(end, pos));
 	console.log("****1" + result.split('All Component Failures:\n'));
 	var errorListStr = result.split('All Component Failures:\n')[1];
+	console.log("****2" + errorListStr.split('\n'));
 	smallest_error = getErrorWithMinChars(errorListStr.split('\n'));
 	console.log("****" + smallest_error);
   }

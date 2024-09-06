@@ -37,6 +37,7 @@ function getErrorWithMinChars(arr) {
     var maxIndex = 0;
 
     for (var i = 1; i < filtered.length; i++) {
+	console.log("Value is: " + filtered[i]);
         if (filtered[i] < max) {
             maxIndex = i;
             max = filtered[i];

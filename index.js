@@ -23,6 +23,7 @@ try {
 	} else if(result.includes('All Test Failures:\n')) {
 		console.log('TEST CLASSES FAILED');
 		var testFailuresListStr = result.split('All Test Failures:\n')[1];
+		console.log("****" + testFailuresListStr);
 		core.setOutput("substring", result);
   		core.setOutput("smallest_error", testFailuresListStr);
 	}

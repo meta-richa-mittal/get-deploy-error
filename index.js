@@ -11,15 +11,22 @@ try {
   if (string) {
     const pos = string.indexOf(start) + start.length;
     result = string.substring(pos, string.indexOf(end, pos));
-	console.log("****1" + result.split('All Component Failures:\n'));
-	var errorListStr = result.split('All Component Failures:\n')[1];
-	console.log("****2" + errorListStr.split(/\d\. /));
-	smallest_error = getErrorWithMinChars(errorListStr.split(/\d\. /));
-	console.log("****" + smallest_error);
+	if(result.includes('All Component Failures:\n')) {
+		console.log('DEPLOYMENT FAILED');
+		console.log("****1" + result.split('All Component Failures:\n'));
+		var errorListStr = result.split('All Component Failures:\n')[1];
+		console.log("****2" + errorListStr.split(/\d\. /));
+		smallest_error = getErrorWithMinChars(errorListStr.split(/\d\. /));
+		console.log("****" + smallest_error);
+		core.setOutput("substring", result);
+  		core.setOutput("smallest_error", smallest_error);
+	} else if(result.includes('All Test Failures:\n')) {
+		console.log('TEST CLASSES FAILED');
+		var testFailuresListStr = result.split('All Test Failures:\n')[1];
+		core.setOutput("substring", result);
+  		core.setOutput("smallest_error", testFailuresListStr);
+	}
   }
-
-  core.setOutput("substring", result);
-  core.setOutput("smallest_error", smallest_error);
 } catch (error) {
   core.setFailed(error.message);
 }
